@@ -1,0 +1,30 @@
+% !Mode:: "TeX:UTF-8"
+\newcommand{\makefirstpageheadrule}{	% 定义首页页眉线绘制命令, 这里为等宽双线
+\makebox[0pt][l]{\rule[0.55\baselineskip]{\headwidth}{0.4pt}}%
+\rule[0.7\baselineskip]{\headwidth}{0.4pt}}
+\newcommand{\makeheadrule}{	% 定义正文页页眉线绘制命令, 单线
+\rule[0.7\baselineskip]{\headwidth}{0.4pt}}
+
+\newboolean{first}	% 定义一个布尔变量用于判断是否为首页
+\setboolean{first}{true}	% 设定 first 变量初值为 true, 根据布尔变量 first 为 true 或 false 分别执行不同的页眉线绘制命令
+\renewcommand{\headrule}{\ifthenelse{\boolean{first}}{\makeheadrule}{\makefirstpageheadrule}}
+
+% \ctexset {today = old}
+\newdateformat{monthyeardate}{\monthname[\THEMONTH], \THEYEAR}
+\renewcommand{\dateseparator}{\shortdate}
+\fancypagestyle{plain}{\setboolean{first}{false}	% 在 plain 样式的定义中将 first 重置为 false
+\lhead{\songti\zihao{-5} \number\year ~年 \number\month ~月} \chead{\zihao{-5} 实\quad 变\quad 函\quad 数\quad 笔\quad 记} \rhead{\zihao{-5}\currenttime, \today}%\monthyeardate\today}
+\lfoot{} \cfoot{} \rfoot{}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{} \chead{\zihao{-5} 阙嘉豪: 矩阵分解} \rhead{\zihao{-5}\thepage}
+\lfoot{} \cfoot{} \rfoot{}
+
+%奇偶页页眉
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE]{\kaishu\zihao{-5}\thepage\quad \leftmark}
+%\fancyhead[RO]{\kaishu\zihao{-5}\rightmark\quad \thepage}
+%\renewcommand\sectionmark[1]{%
+%\markright{\CTEXifname{\CTEXthesection\quad}{}#1}}

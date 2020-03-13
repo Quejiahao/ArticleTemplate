@@ -1,0 +1,39 @@
+% !Mode:: "TeX:UTF-8"
+%\renewcommand\refname{参考文献}
+%\renewcommand\abstractname{摘要}
+%\ctexset{section = {
+%	name = {\S},
+%	number = \arabic{section},
+%	}
+%}
+\ctexset{section = {format = {\zihao{-4}\heiti\flushleft}}}
+\ctexset{subsection = {format = {\zihao{5}\heiti\flushleft}}}
+\ctexset{subsubsection = {format = {\zihao{5}\songti\flushleft}}}
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\heiti 输入:}
+\renewcommand{\algorithmicensure}{\heiti 输出:}
+\renewcommand\appendixname{附录}
+\renewcommand\appendixtocname{附录}
+\renewcommand\appendixpagename{\zihao{-4} 附录}
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\DeclareCaptionFont{song}{\songti}
+\DeclareCaptionFont{hei}{\heiti}
+\DeclareCaptionFont{minusfive}{\zihao{-5}}
+\DeclareCaptionFont{five}{\zihao{5}}
+\captionsetup*[figure]{
+	font={song, minusfive}	% 图的字体, 宋体小五
+}
+\captionsetup*[table]{
+	font={hei, minusfive}	% 表的字体, 黑体小五
+}
+\captionsetup*[algorithm]{
+	font={five}	% 算法的字体, 宋体小五
+}
+
+\title{\zihao{0}\heiti 泛函分析笔记}
+\author{\zihao{-0}\kaishu 阙嘉豪}
+\date{\zihao{1}最后编译时间: \number\year ~年 \number\month ~月 \number\day ~日 \currenttime}

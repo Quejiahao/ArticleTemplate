@@ -1,0 +1,530 @@
+% !Mode:: "TeX:UTF-8"
+%-------------------- 文类 --------------------
+\documentclass[UTF8, a4paper, 12pt, oneside, onecolumn]{article}
+
+%-------------------- 宏包 --------------------
+\input{../template/usepackage}
+
+%-------------------- 杂 --------------------
+\newcommand\blfootnote[1]{\begingroup\renewcommand\thefootnote{}\footnote{#1}\addtocounter{footnote}{-1}\endgroup}
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+
+\geometry{left = 2.5 cm, right = 2.5 cm, top = 2.5 cm, bottom = 2.5 cm,	% 页边距
+			headheight = 40 pt, headsep = 15 pt,	% 页眉距离,
+			marginparwidth = 4 cm, marginparsep = 10 pt}	% 边注设置
+%\renewcommand{\baselinestretch}{1.5}	% 行距, 系统默认约 1.2, ctex 默认约 1.56
+%\linespread{1}	% 行距
+
+\setcounter{MaxMatrixCols}{20}	% 矩阵最大列数
+
+% 矩阵行距
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+	\edef\arraystretch{#1}%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{*\c@MaxMatrixCols c}}
+\makeatother
+
+% 水印
+\newcommand{\watermark}[3]{\AddToShipoutPictureBG{
+\parbox[b][\paperheight]{\paperwidth}{
+\vfill%
+\centering%
+\tikz[remember picture, overlay]%
+  \node [rotate = #1, scale = #2] at (current page.center)%
+    {\textcolor{gray!80!cyan!30}{#3}};
+\vfill}}}
+%\newcommand{\watermarkoff}{\ClearShipoutPictureBG}
+
+%\xeCJKsetup{CJKecglue={}}
+
+\raggedbottom	% 防止报 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+% 代码样式设置
+\lstset{
+	backgroundcolor = \color{lightgray!30},
+	keywordstyle    = \color{blue},
+	stringstyle     = \color{purple!40},
+	basicstyle      = {\small\ttfamily},
+	breaklines      = true,
+	tabsize         = 4,
+	gobble          = 2,
+	numbers         = left,
+%	numberstyle     = \tiny,
+	frame           = single,
+	xleftmargin     = \ccwd,
+	numbersep       = \ccwd,
+	columns         = fullflexible,
+	emphstyle       = {\color{blue}\small\ttfamily},
+	emph            = {mkdir,rmdir,sudo,mount,umount,rm},
+}
+
+\allowdisplaybreaks[2]	% 公式内允许换页
+
+%-------------------- 文档自定义 --------------------
+
+
+
+%-------------------- 字体设置 --------------------
+\input{../template/fonts}
+
+%-------------------- 标题样式 --------------------
+\input{../template/title}
+
+%-------------------- 自定义符号 --------------------
+\input{../template/symbols}
+
+%-------------------- 自定义环境 --------------------
+\input{../template/environments}
+
+%-------------------- \item 编号 --------------------
+\input{../template/itemstyle}
+
+%-------------------- 页眉页脚 --------------------
+\input{headersfooters}
+
+%-------------------- 正文 --------------------
+\begin{document}
+
+\thispagestyle{plain}
+
+%\columnseprule = 1pt	% 栏线
+\begin{center}
+	{\zihao{-2}\heiti 常微分方程自测题~2} \\
+	\vspace{1.5ex}
+	{\zihao{-4}\fangsong 阙嘉豪\textsuperscript{1}%
+	\blfootnote{\zihao{6}\heiti 作者简介: \songti 阙嘉豪~(1999—), 男, 广东深圳人, 北京师范大学数学科学学院本科生}} \\
+	{\zihao{6}\songti (1. 北京师范大学 数学科学学院, 北京~~100875)}
+\end{center}
+
+{\zihao{-5}\heiti 摘要: \songti 本文主要介绍了矩阵分解的三种办法, 分别讨论了分解的存在性及唯一性的问题. 在三角分解中, 通过~Gauss 消元法引出了分解, 并给出了消元过程能进行到底的条件, 最后得到了~LDU 基本定理. 在~QR 分解中, 分别使用了~Gram–Schmidt 正交化方法、Givens 变换和~Householder 变换来得到分解式. 在最大秩分解中, 通过使用初等行变换将矩阵化为阶梯形矩阵获得了最大秩分解.}
+
+{\zihao{-5}\heiti 关键字: \songti 矩阵;~LU 分解;~QR 分解; 最大秩分解}
+
+{\zihao{-5}\heiti 中图分类号: O 151.21 \qquad\quad 文献标识码: A \qquad\quad}
+
+\zihao{5}
+
+\tableofcontents
+
+%\watermark{60}{10}{\currenttime}
+
+Hello \LaTeX
+
+你好\LaTeX
+
+% 行内公式
+方程 1 $ a + b = c $,
+
+方程 3 \begin{math}  g \div h = i \end{math}. % 行间公式
+
+Newton-Leibniz 公式
+\begin{equation}
+	\int_a^b f(x) = F(b) - F(a).
+\end{equation}
+
+质能方程
+$$E = mc^2.$$
+
+线性组合
+\[\bm\gamma = \lambda_1\bm\alpha + \lambda_2\bm\beta.\]	% 需要 \usepackage{bm}
+
+正弦定理
+\begin{displaymath}
+\dfrac{a}{\sin A} = \dfrac{b}{\sin B} = \dfrac{c}{\sin C}.
+\end{displaymath}
+
+$\forall\exists$
+\{ \}
+
+$\varepsilon \partial \cdots \aleph \rtimes$	% \rtimes 需要 \usepackage{amssymb}
+
+$\lim$
+
+矩阵的秩 $a\rank\bm{M} rank$
+
+\begin{center}
+最大值 $\max_{i}$	\[\max_{i}\]
+
+$\displaystyle\max_{i}$
+
+积分 $\int_a^b$	\[\int_a^b\]
+
+$\displaystyle\int_a^b$
+
+\[\int\limits_a^b\]
+
+\[\intop_a^b\]
+\end{center}
+
+\[\sum_{\substack{0 \leq i\\ 0 < j < n}}\]
+
+{\bf 练习 1}
+\[(\lim_{\mathcal{B}}f(x) = A) := (\forall V(a) \subset Y \exists B \in \mathcal{B}(f(B) \subset f(A))).\]
+
+$$(\lim_{n \to \infty} x_n = A) := \forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall n \geqslant N(|x_n - A| < \varepsilon).$$
+
+$(\lim_{n \to \infty} x_n = A) := \forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall n \geqslant N(|x_n - A| < \varepsilon).$
+
+$(\displaystyle\lim_{n \to \infty} x_n = A) := \forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall n \geqslant N(|x_n - A| < \varepsilon).$
+
+勾股定理\begin{equation}
+c^2 = a^2 + b^2.
+\end{equation}
+
+勾股定理\begin{equation*}
+c^2 = a^2 + b^2.
+\end{equation*}
+
+% 需要 \usepackage{array}	% 数组宏包
+\begin{equation*}
+	\left.%
+	\begin{array}{>{} r c@{}l@{}l}
+		\text{\kaishu 常数})	& y	& =	& c \\
+		\text{\kaishu 抛物线})	& y	& =	& cx + d \\
+		\text{\kaishu 直线})	& y	& =	& bx^2 + cx + d \\
+	\end{array}\right\}\text{多项式}
+\end{equation*}
+
+\begin{gather}
+y = \mathrm{e}^x \\
+x = \ln y
+\end{gather}
+
+\begin{equation}
+\left\{\begin{gathered}
+y = \mathrm{e}^x \\
+x = \ln y
+\end{gathered}\right.\text{与}
+\left\{\begin{gathered}
+y = x + 1 \\
+x = y - 1
+\end{gathered}\right.
+\end{equation}
+
+\begin{align}	% 列对之间的空白宽度与列对两侧的空白宽度相等
+c_{11}	&= a_{11}\times b_{11}	& c_{12}	&= a_{12}\times b_{12} \\
+c_{21}	&= a_{21}\times b_{21}	& c_{22}	&= a_{22}\times b_{22}
+\end{align}
+
+\begin{equation}
+\begin{aligned}	% 列对之间的空白宽度与列对两侧的空白宽度相等
+c_{11}	&= a_{11}\times b_{11}	& c_{12}	&= a_{12}\times b_{12} \\
+c_{21}	&= a_{21}\times b_{21}	& c_{22}	&= a_{22}\times b_{22}
+\end{aligned}
+\end{equation}
+
+\begin{flalign}	% 两端对齐
+c_{11}	&= a_{11}\times b_{11}	& c_{12}	&= a_{12}\times b_{12} \\
+c_{21}	&= a_{21}\times b_{21}	& c_{22}	&= a_{22}\times b_{22}
+\end{flalign}
+\newpage
+
+\begin{subequations}	% 子公式编号
+向量相加\begin{equation}
+\bm{a} = \bm{b} + \bm{c}
+\end{equation}
+\begin{align}
+a_1	& = b_1 + c_1 \\
+a_2	& = b_2 + c_2 \\
+a_2	& = b_2 + c_2
+\end{align}
+\end{subequations}
+
+完全平方展开计算
+\begin{equation}
+\begin{split}	% 编号位置通过 \usepackage[tbtags]{amsmath} 移至最下方
+f(x)	& = 2(x + 1)^2 - 1 \\
+		& = 2(x^2 + 2x + 1) - 1 \\
+		& = 2x^2 + 4x + 1
+\end{split}
+\end{equation}
+
+% 括号环境
+\begin{equation}
+|x|=
+\begin{cases}	% 只给一个序号
+x	& x \geq 0 \\
+-x	& x \leq 0
+\end{cases}\label{abs}
+\end{equation}
+
+% 需要 cases 括号宏包
+\begin{numcases}{|x|=}	% 分别给出序号
+x	& $ x \geq 0 $ \\
+-x	& $ x \leq 0 $
+\end{numcases}
+
+\begin{subnumcases}{|x|=}	% 两行共用一个序号
+x	& $ x \geq 0 $ \\
+-x	& $ x \leq 0 $
+\end{subnumcases}
+
+{\bf 练习 2}
+真空中电磁场的麦克斯韦方程组:
+\begin{equation}
+\begin{aligned}
+\mathrm{div} \bm{E} &= \dfrac{\rho}{\varepsilon_0},& \mathrm{div} \bm{B} &= 0,\\
+\mathrm{rot} \bm{E} &= -\dfrac{\partial \bm{B}}{\partial t},& \mathrm{rot} \bm{B} &= \dfrac{\bm{j}}{\varepsilon_0 c^2} + \dfrac{1}{c^2} \dfrac{\partial \bm{E}}{\partial t}.
+\end{aligned}
+\end{equation}
+
+% 公式序号
+$$U = Q + W\eqno{[T.1]}$$
+$$U = Q + W\leqno{[T.1]}$$
+\begin{equation}U = Q + W \notag\end{equation}
+\begin{equation}U = Q + W \tag{$*$}\end{equation}
+\begin{equation}U = Q + W \tag*{$*$}\end{equation}
+\begin{equation*}U = Q + W \tag*{$*$}\end{equation*}
+
+% 交叉引用
+绝对值函数 \ref{abs}
+
+绝对值函数 \eqref{abs}
+
+分块矩阵
+\begin{equation}
+\left(
+\begin{array}{c@{}c@{}}
+\begin{array}{|cc|}\hline
+a_{11}	& a_{12} \\
+a_{21}	& a_{22} \\ \hline
+\end{array}	& \bm{O} \\
+\bm{O}		& \begin{array}{|ccc|}\hline
+b_{11}	& b_{12}	& b_{13} \\
+b_{21}	& b_{22}	& b_{23} \\
+b_{31}	& b_{32}	& b_{33} \\ \hline
+\end{array} \\
+\end{array}\right)
+\end{equation}
+
+三阶循环矩阵
+\begin{gather*}
+	\begin{matrix}
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\
+		1 & 0 & 0
+	\end{matrix}\quad
+	\begin{pmatrix}
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\
+		1 & 0 & 0
+	\end{pmatrix}\quad
+	\begin{bmatrix}
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\
+		1 & 0 & 0
+	\end{bmatrix}\\
+	\begin{vmatrix}
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\
+		1 & 0 & 0
+	\end{vmatrix}\quad
+	\begin{Vmatrix}
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\
+		1 & 0 & 0
+	\end{Vmatrix}
+\end{gather*}
+
+% Givens 矩阵
+\[\bm T_{ij} = \begin{pmatrix}
+	1 \\
+		& \ddots \\
+		&		& 1 \\
+		&		&	& c		&	 &		&	 & s \\
+		&		&	&		& 1 \\
+		&		&	&		&	& \ddots \\
+		&		&	&		&	&		& 1 \\
+		&		&	& -s	&	&		&	& c \\
+		&		&	&		&	&		&	&	& 1 \\
+		&		&	&		&	&		&	&	&	& \ddots \\
+		&		&	&		&	&		&	&	&	&		& 1 \\
+\end{pmatrix} \begin{matrix}
+\\
+\\
+\\
+i \\
+\\
+\\
+\\
+j \\
+\\
+\\
+\\
+\end{matrix},\quad (i < j)\]
+
+\[a\mspace{1mu}b\quad c\]
+\vspace{1cm}
+\[d\]
+
+分数
+\[\frac{a}{b}\dfrac{a}{b}\displaystyle\frac{a}{b}\tfrac{a}{b}\textstyle\frac{a}{b}\]
+
+\centerline{$\frac{a}{b}\dfrac{a}{b}\displaystyle\frac{a}{b}\tfrac{a}{b}\textstyle\frac{a}{b}$}
+
+%二项式系数
+%\[{n + 1 \choose k} = {n \choose k} + {n \choose k + 1}.\]
+
+二项式系数
+\[\binom{n + 1}{k} = \tbinom{n}{k} + \dbinom{n}{k - 1}.\]
+
+
+\centerline{二项式系数
+$\binom{n + 1}{k} = \tbinom{n}{k} + \dbinom{n}{k - 1}$.}
+
+柯西不等式
+\[(\sum_{i = 1}^n u_i v_i)^2 \leq (\sum_{i = 1}^n u_i^2)(\sum_{i = 1}^n v_i^2).\]
+
+柯西不等式
+\[\left(\sum_{i = 1}^n u_i v_i\right)^2 \leq \left(\sum_{i = 1}^n u_i^2\right)\left(\sum_{i = 1}^n v_i^2\right).\]
+
+{\bf 练习 3} (Cauchy-Binet 公式)\quad {\kaishu 设 $\bm{A} = \left(a_{ij}\right)$ 是 $m \times n$ 矩阵, $\bm{B} = \left(b_{ij}\right)$ 是 $n \times m$ 矩阵. $\bm{A}\begin{pmatrix}
+	i_1 & \cdots & i_s \\
+	j_1 & \cdots & j_s
+\end{pmatrix}$ 表示 $\bm{A}$ 的一个 $s$ 阶子式, 它由 $\bm{A}$ 的第 $i_1, \cdots, i_s$ 行与第 $j_1, \cdots, j_s$ 列交点上的元素按原次序排列组成的行列式. 同理可定义 $\bm{B}$ 的 $s$ 阶子式.
+
+(1) 若 $m > n$, 则必有 $|\bm{AB}| = 0$;
+
+(2) 若 $m \leq n$, 则必有
+\[|\bm{AB}| = \sum_{1 \leq j_1 < j_2 < \cdots < j_m \leq n} \bm{A}\begin{pmatrix}
+	1	& 2		& \cdots & m \\
+	j_1	& j_2	& \cdots & j_m
+\end{pmatrix} \bm{B}\begin{pmatrix}
+	j_1	& j_2	& \cdots & j_m \\
+	1	& 2		& \cdots & m
+\end{pmatrix}.\]
+}
+
+{\bf 练习 4} \begin{equation*}\begin{split}
+\varphi^*\omega(t)(\bm{\tau}_1, \bm{\tau}_2) :&= \omega(\varphi(\bm{\tau}_1, \bm{\tau}_2)) = \mathrm{d} x^{i_1} \mathrm{d} x^{i_2}(\bm{\xi}_1, \bm{\xi}_2) \\
+&= \begin{vmatrix}
+	\xi_1^{i_1}	& \xi_1^{i_2} \\
+	\xi_2^{i_1}	& \xi_2^{i_2}
+\end{vmatrix} = \begin{vmatrix}
+	\dfrac{\partial x^{i_1}}{\partial t^{j_1}} \tau_1^{j_1}	& \dfrac{\partial x^{i_2}}{\partial t^{j_2}} \tau_1^{j_2} \\
+	\dfrac{\partial x^{i_1}}{\partial t^{j_1}} \tau_2^{j_1}	& \dfrac{\partial x^{i_2}}{\partial t^{j_2}} \tau_2^{j_2}
+\end{vmatrix} \\
+&= \sum_{j_1, j_2 = 1}^m \dfrac{\partial x^{i_1}}{\partial t^{j_1}} \dfrac{\partial x^{i_2}}{\partial t^{j_2}} \begin{vmatrix}
+	\tau_1^{j_1} & \tau_1^{j_2} \\
+	\tau_2^{j_1} & \tau_2^{j_2}
+\end{vmatrix} \\
+&= \sum_{j_1, j_2 = 1}^m \dfrac{\partial x^{i_1}}{\partial t^{j_1}} \dfrac{\partial x^{i_2}}{\partial t^{j_2}} \mathrm{d} t^{j_1} \wedge \mathrm{d} t^{j_2} (\bm{\tau}_1, \bm{\tau}_2) \\
+&= \sum_{1 \leqslant j_1 < j_2 \leqslant m} \left(\dfrac{\partial x^{i_1}}{\partial t^{j_1}} \dfrac{\partial x^{i_2}}{\partial t^{j_2}} - \dfrac{\partial x^{i_1}}{\partial t^{j_2}} \dfrac{\partial x^{i_2}}{\partial t^{j_1}}\right) \mathrm{d} t^{j_1} \wedge \mathrm{d} t^{j_2} (\bm{\tau}_1, \bm{\tau}_2) \\
+&= \sum_{1 \leqslant j_1 < j_2 \leqslant m} \begin{vmatrix}
+	\dfrac{\partial x^{i_1}}{\partial t^{j_1}} & \dfrac{\partial x^{i_2}}{\partial t^{j_1}} \\
+	\dfrac{\partial x^{i_1}}{\partial t^{j_2}} & \dfrac{\partial x^{i_2}}{\partial t^{j_2}}
+\end{vmatrix}(t) \mathrm{d} t^{j_1} \wedge \mathrm{d} t^{j_2} (\bm{\tau}_1, \bm{\tau}_2).
+\end{split}\end{equation*}
+
+% 交换图
+\begin{equation}\begin{CD}
+	a		@>j>>	b \\
+	@VVV			@VV{\lim P}V \\
+	c		@=		d
+\end{CD}\end{equation}
+
+\begin{equation}\label{cdd}
+\xymatrix{
+A \ar[d] \ar[r] & B \\
+B \ar[r] & C \ar[u]}
+\end{equation}
+
+引用参考文献超链接\upcite{RongYuan}
+
+\hyperref[cdd]{text}
+
+$\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_$
+
+\begin{equation*}
+\begin{split}
+    a \\
+     bbbbbbbbbbb \\
+      c
+  \end{split}
+  \begin{array}{c}
+    a \\
+    b \\
+    c
+  \end{array}
+\end{equation*}
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}
+		\draw[fill = green!20] (0, 2.866) arc[start angle = 60, end angle = 300, x radius = 2, y radius = 1] arc[start angle = 240, end angle = 120, x radius = 2, y radius = 1] (-2, 2) node{$U_\alpha$};
+		\draw[fill = blue!20] (0, 2.866) arc[start angle = 120, end angle = -120, x radius = 2, y radius = 1] arc[start angle = -60, end angle = 60, x radius = 2, y radius = 1] (2, 2) node{$U_\beta$};
+		\draw[fill = red!20] (0, 2.866) arc[start angle = 120, end angle = 240, x radius = 2, y radius = 1] arc[start angle = -60, end angle = 60, x radius = 2, y radius = 1] (0, 2) node{$W$};
+		\draw (-1, 0) -- (-4, 0) -- (-5, -2) -- (-2, -2) -- (-1, 0) (-0.5, -0.25) node{$\R^n$};
+		\draw (4, 0) -- (1, 0) -- (0, -2) -- (3, -2) -- (4, 0) (4.5, -0.25) node{$\R^n$};
+		\draw[rotate around = {4 : (-3, -1)}, color = black!50, fill = green!20] (-3, -1) ellipse [x radius = 1.4, y radius = 0.7];
+		\draw[rotate around = {4 : (2, -1)}, color = black!50, fill = blue!20] (2, -1) ellipse [x radius = 1.4, y radius = 0.7];
+		\draw[rotate around = {4 : (-3, -1)}, color = black!50, fill = red!20] (-3, -0.3) arc[start angle = 150, end angle = 210, radius = 1.4] arc[start angle = -90, end angle = 90, x radius = 1.4, y radius = 0.7];
+		\draw (-3, -1) node{$f_\alpha\(U_\alpha\)$};
+		\draw[rotate around = {4 : (2, -1)}, color = black!50, fill = red!20] (2, -0.3) arc[start angle = 30, end angle = -30, radius = 1.4] arc[start angle = 270, end angle = 90, x radius = 1.4, y radius = 0.7];
+		\draw (2, -1) node{$f_\beta\(U_\beta\)$};
+		\draw[->] (-2, 1.5) arc[start angle = 130, end angle = 160, radius = 3.4] node[midway, sloped, above]{$f_\alpha$};
+		\draw[->] (2, 1.5) arc[start angle = 50, end angle = 20, radius = 3.4] node[midway, sloped, above]{$f_\beta$};
+		\draw[<-] (-0.5, 2) arc[start angle = 120, end angle = 185, radius = 2.9] node[midway, sloped, below]{$f_\alpha^{-1}$};
+		\draw[->] (0.5, 2) arc[start angle = 60, end angle = -5, radius = 2.9] node[midway, sloped, below]{$f_\beta$};
+	\end{tikzpicture}
+	\caption{Condition}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{.25\linewidth}\centering
+\qrh{https://jq.qq.com/?_wv=1027&k=57DLax6}
+\end{minipage}
+\begin{minipage}[t]{.25\linewidth}\centering
+\qrh{http://weixin.qq.com/r/Zjn-54fE5tqZrcOE92x0}
+\end{minipage}
+\caption*{\heiti\zihao{3}欢迎扫码加群及关注公众号}
+\end{figure}
+
+\begin{lstlisting}[language = TeX]
+	\documentclass{article}
+	
+	\begin{document}
+		Hello \LaTeX !
+	\end{document}
+\end{lstlisting}
+
+``"
+
+\verb”%”
+
+\begin{enumerate}
+	\item
+	\item aaaa
+
+aaaa
+\end{enumerate}
+
+\begin{thebibliography}{1}
+\addcontentsline{toc}{section}{参考文献}	% 将 "参考文献" 加入目录中
+
+\bibitem{RongYuan} 袁荣. 常微分方程[M]. 北京: 高等教育出版社, 2012:59,62.
+\end{thebibliography}
+%\end{multicols}
+
+\begin{center}
+{\zihao{-3} \bf Matrix decomposition}
+
+{\zihao{-4} QUE~Jia-hao}
+
+{\zihao{-5} (School of Mathematical Sciences, Beijing Normal University, Beijing 100875, China)}
+\end{center}
+
+{\zihao{5} \bf Abstract}~.
+
+{\zihao{5} \bf Key words}~Matrix;~LU decomposition;
+
+\begin{appendices}
+
+\section{Some Appendix2}\label{aaa}
+The contents...
+
+\end{appendices}
+\end{document}

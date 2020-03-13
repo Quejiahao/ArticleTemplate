@@ -1,0 +1,11 @@
+% !Mode:: "TeX:UTF-8"
+\AddEnumerateCounter{\chinese}{\chinese}{}	% 中文编号
+\renewcommand{\theenumi}{\roman{enumi}}
+\renewcommand{\labelenumi}{(\theenumi)}	% 设置第一级编号为一、
+\renewcommand{\theenumii}{\arabic{enumii}}
+\renewcommand{\labelenumii}{\theenumi .\theenumii}	% 设置第二级编号为 1.1
+\renewcommand{\theenumiii}{\arabic{enumiii}}
+\renewcommand{\labelenumiii}{\theenumi .\theenumii .\theenumiii}	% 设置第三级编号为 1.1.1
+
+\setlist[enumerate]{itemindent = 2em, leftmargin = 0ex, listparindent = 2em}
+\setlist[itemize]{itemindent = 2em, leftmargin = 0ex, listparindent = 2em}
