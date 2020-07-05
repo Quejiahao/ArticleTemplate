@@ -6,15 +6,54 @@
 %	number = \arabic{section},
 %	}
 %}
-\ctexset{section = {format = {\zihao{-4}\heiti\flushleft}}}
-\ctexset{subsection = {format = {\zihao{5}\heiti\flushleft}}}
-\ctexset{subsubsection = {format = {\zihao{5}\songti\flushleft}}}
-\floatname{algorithm}{算法}
+\ctexset{
+	contentsname = {\zihao{3}\mdseries\heiti 目录},
+	part = {format = {\zihao{3}\mdseries\heiti\centering}},
+	section = {
+		format = {\zihao{-4}\mdseries\heiti\flushleft},
+		number = \bfseries{\arabic{section}}
+	},
+	subsection = {
+		format = {\zihao{5}\mdseries\heiti\flushleft},
+		number = \bfseries{\arabic{section}.\arabic{subsection}}
+	},
+	subsubsection = {format = {\zihao{5}\mdseries\songti\flushleft}},
+}
+
+\titlecontents{part}
+			[0em]
+			{\zihao{3}\mdseries\heiti}
+			{\contentslabel{0em}}
+			{\hspace*{0em}}
+			{\hfill \bfseries\contentspage}
+
+\titlecontents{section}
+			[2.3em]
+			{\zihao{-4}\mdseries\heiti}
+			{\contentslabel{2.3em}}
+			{\hspace*{-2.3em}}
+			{\titlerule*[1pc]{.} \bfseries\contentspage}
+
+\titlecontents{subsection}
+			[5.5em]
+			{\zihao{5}\mdseries\heiti}
+			{\contentslabel{3.2em}}
+			{\hspace*{-3.2em}}
+			{\titlerule*[1pc]{.} \bfseries\contentspage}
+
+\titlecontents{subsubsection}
+			[8.5em]
+			{\zihao{5}\mdseries\songti}
+			{\contentslabel{3.9em}}
+			{\hspace*{-3.9em}}
+			{\titlerule*[1pc]{.} \contentspage}
+
+\floatname{algorithm}{\mdseries\heiti 算法}
 \renewcommand{\algorithmicrequire}{\heiti 输入:}
 \renewcommand{\algorithmicensure}{\heiti 输出:}
 \renewcommand\appendixname{附录}
 \renewcommand\appendixtocname{附录}
-\renewcommand\appendixpagename{\zihao{-4} 附录}
+\renewcommand\appendixpagename{\zihao{-4}\mdseries\heiti 附录}
 
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
@@ -24,16 +63,16 @@
 \DeclareCaptionFont{hei}{\heiti}
 \DeclareCaptionFont{minusfive}{\zihao{-5}}
 \DeclareCaptionFont{five}{\zihao{5}}
-\captionsetup*[figure]{
-	font={song, minusfive}	% 图的字体, 宋体小五
+\captionsetup*[figure]{	% 图标题设置
+	font={song, minusfive}	% 宋体小五
 }
-\captionsetup*[table]{
-	font={hei, minusfive}	% 表的字体, 黑体小五
+\captionsetup*[table]{	% 表标题设置
+	font={hei, minusfive}	% 黑体小五
 }
-\captionsetup*[algorithm]{
-	font={five}	% 算法的字体, 宋体小五
+\captionsetup*[algorithm]{	% 算法标题设置
+	font={song, minusfive}	% 宋体小五
 }
 
-\title{\zihao{0}\heiti 泛函分析笔记}
-\author{\zihao{-0}\kaishu 阙嘉豪}
-\date{\zihao{1}最后编译时间: \number\year ~年 \number\month ~月 \number\day ~日 \currenttime}
+\title{\zihao{0}\mdseries\heiti 泛函分析笔记}
+\author{\zihao{-0}\mdseries\kaishu 阙嘉豪}
+\date{\zihao{1}\mdseries 最后编译时间: \number\year ~年 \number\month ~月 \number\day ~日 \currenttime}

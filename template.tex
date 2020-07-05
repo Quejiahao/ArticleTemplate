@@ -5,66 +5,8 @@
 %-------------------- 宏包 --------------------
 \input{../template/usepackage}
 
-%-------------------- 杂 --------------------
-\newcommand\blfootnote[1]{\begingroup\renewcommand\thefootnote{}\footnote{#1}\addtocounter{footnote}{-1}\endgroup}
-\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
-
-\geometry{left = 2.5 cm, right = 2.5 cm, top = 2.5 cm, bottom = 2.5 cm,	% 页边距
-			headheight = 40 pt, headsep = 15 pt,	% 页眉距离,
-			marginparwidth = 4 cm, marginparsep = 10 pt}	% 边注设置
-%\renewcommand{\baselinestretch}{1.5}	% 行距, 系统默认约 1.2, ctex 默认约 1.56
-%\linespread{1}	% 行距
-
-\setcounter{MaxMatrixCols}{20}	% 矩阵最大列数
-
-% 矩阵行距
-\makeatletter
-\renewcommand*\env@matrix[1][\arraystretch]{%
-	\edef\arraystretch{#1}%
-	\hskip -\arraycolsep
-	\let\@ifnextchar\new@ifnextchar
-	\array{*\c@MaxMatrixCols c}}
-\makeatother
-
-% 水印
-\newcommand{\watermark}[3]{\AddToShipoutPictureBG{
-\parbox[b][\paperheight]{\paperwidth}{
-\vfill%
-\centering%
-\tikz[remember picture, overlay]%
-  \node [rotate = #1, scale = #2] at (current page.center)%
-    {\textcolor{gray!80!cyan!30}{#3}};
-\vfill}}}
-%\newcommand{\watermarkoff}{\ClearShipoutPictureBG}
-
-%\xeCJKsetup{CJKecglue={}}
-
-\raggedbottom	% 防止报 Underfull \vbox (badness 10000) has occurred while \output is active []
-
-% 代码样式设置
-\lstset{
-	backgroundcolor = \color{lightgray!30},
-	keywordstyle    = \color{blue},
-	stringstyle     = \color{purple!40},
-	basicstyle      = {\small\ttfamily},
-	breaklines      = true,
-	tabsize         = 4,
-	gobble          = 2,
-	numbers         = left,
-%	numberstyle     = \tiny,
-	frame           = single,
-	xleftmargin     = \ccwd,
-	numbersep       = \ccwd,
-	columns         = fullflexible,
-	emphstyle       = {\color{blue}\small\ttfamily},
-	emph            = {mkdir,rmdir,sudo,mount,umount,rm},
-}
-
-\allowdisplaybreaks[2]	% 公式内允许换页
-
-%-------------------- 文档自定义 --------------------
-
-
+%-------------------- 杂项 --------------------
+\input{../template/misc}
 
 %-------------------- 字体设置 --------------------
 \input{../template/fonts}
@@ -81,6 +23,12 @@
 %-------------------- \item 编号 --------------------
 \input{../template/itemstyle}
 
+%-------------------- 代码样式设置 --------------------
+\input{../template/codestyle}
+
+%-------------------- PDF 元信息, 建模时注释掉 --------------------
+\input{pdfinfo}
+
 %-------------------- 页眉页脚 --------------------
 \input{headersfooters}
 
@@ -93,9 +41,9 @@
 \begin{center}
 	{\zihao{-2}\heiti 常微分方程自测题~2} \\
 	\vspace{1.5ex}
-	{\zihao{-4}\fangsong 阙嘉豪\textsuperscript{1}%
-	\blfootnote{\zihao{6}\heiti 作者简介: \songti 阙嘉豪~(1999—), 男, 广东深圳人, 北京师范大学数学科学学院本科生}} \\
-	{\zihao{6}\songti (1. 北京师范大学 数学科学学院, 北京~~100875)}
+	{\zihao{-4}\fangsong 阙嘉豪\textsuperscript{\hyperref[auth:1]{1}}%
+	\blfootnote{\zihao{6}\heiti 作者简介: \songti 阙嘉豪~(1999—), 男, 广东深圳人, 北京师范大学数学科学学院本科生.}} \\
+	{\zihao{6}\songti \label{auth:1}(1. 北京师范大学 数学科学学院, 北京~~100875)}
 \end{center}
 
 {\zihao{-5}\heiti 摘要: \songti 本文主要介绍了矩阵分解的三种办法, 分别讨论了分解的存在性及唯一性的问题. 在三角分解中, 通过~Gauss 消元法引出了分解, 并给出了消元过程能进行到底的条件, 最后得到了~LDU 基本定理. 在~QR 分解中, 分别使用了~Gram–Schmidt 正交化方法、Givens 变换和~Householder 变换来得到分解式. 在最大秩分解中, 通过使用初等行变换将矩阵化为阶梯形矩阵获得了最大秩分解.}
@@ -104,13 +52,18 @@
 
 {\zihao{-5}\heiti 中图分类号: O 151.21 \qquad\quad 文献标识码: A \qquad\quad}
 
-\zihao{5}
-
 \tableofcontents
+
+\zihao{5}
 
 %\watermark{60}{10}{\currenttime}
 
-Hello \LaTeX
+\part{部分}
+\section{一级标题}
+\subsection{二级标题}
+\subsubsection{三级标题}
+
+Hello \LaTeX \\
 
 你好\LaTeX
 
@@ -187,6 +140,28 @@ c^2 = a^2 + b^2.
 	\end{array}\right\}\text{多项式}
 \end{equation*}
 
+$$\begin{array}{r@{~}ll}
+x_k &= \left\{
+\begin{array}{l}
+\eta, \\
+a+(k-1)h,
+\end{array}\right. &
+\begin{array}{l}
+k=0,\\
+k=1,2,\cdots,n,
+\end{array}
+\\
+y_k &= \left\{
+\begin{array}{l}
+\eta,\\
+y_{k-1}+\dfrac{h}{8}(t_{1,k}+3t_{2,k}+3t_{3,k}+t_{4,k}),
+\end{array}\right. &
+\begin{array}{l}
+k=0,\\
+k=1,2,\cdots,n,
+\end{array}
+\end{array}$$
+
 \begin{gather}
 y = \mathrm{e}^x \\
 x = \ln y
@@ -250,16 +225,16 @@ x	& x \geq 0 \\
 \end{cases}\label{abs}
 \end{equation}
 
-% 需要 cases 括号宏包
-\begin{numcases}{|x|=}	% 分别给出序号
-x	& $ x \geq 0 $ \\
--x	& $ x \leq 0 $
-\end{numcases}
+% 需要 cases 括号宏包, 报 Bad Boxes 以后解决
+%\begin{numcases}{|x|=}	% 分别给出序号
+%x & $ x \geq 0 $\\
+%-x & $ x \leq 0 $
+%\end{numcases}
 
-\begin{subnumcases}{|x|=}	% 两行共用一个序号
-x	& $ x \geq 0 $ \\
--x	& $ x \leq 0 $
-\end{subnumcases}
+%\begin{subnumcases}{|x|=}	% 两行共用一个序号
+%x	& $ x \geq 0 $ \\
+%-x	& $ x \leq 0 $
+%\end{subnumcases}
 
 {\bf 练习 2}
 真空中电磁场的麦克斯韦方程组:
@@ -431,6 +406,8 @@ A \ar[d] \ar[r] & B \\
 B \ar[r] & C \ar[u]}
 \end{equation}
 
+\pageref{LastPage}
+
 引用参考文献超链接\upcite{RongYuan}
 
 \hyperref[cdd]{text}
@@ -452,7 +429,9 @@ $\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_$
 
 \begin{figure}[ht]
 	\centering
-	\begin{tikzpicture}
+	\begin{tikzpicture}[decoration={
+		markings,% switch on markings
+		mark=at position .5 with {\arrow[line width=1pt]{>}}},]
 		\draw[fill = green!20] (0, 2.866) arc[start angle = 60, end angle = 300, x radius = 2, y radius = 1] arc[start angle = 240, end angle = 120, x radius = 2, y radius = 1] (-2, 2) node{$U_\alpha$};
 		\draw[fill = blue!20] (0, 2.866) arc[start angle = 120, end angle = -120, x radius = 2, y radius = 1] arc[start angle = -60, end angle = 60, x radius = 2, y radius = 1] (2, 2) node{$U_\beta$};
 		\draw[fill = red!20] (0, 2.866) arc[start angle = 120, end angle = 240, x radius = 2, y radius = 1] arc[start angle = -60, end angle = 60, x radius = 2, y radius = 1] (0, 2) node{$W$};
@@ -483,26 +462,38 @@ $\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_$
 \caption*{\heiti\zihao{3}欢迎扫码加群及关注公众号}
 \end{figure}
 
-\begin{lstlisting}[language = TeX]
-	\documentclass{article}
-	
-	\begin{document}
-		Hello \LaTeX !
-	\end{document}
+\begin{lstlisting}[language = C]
+  #include <stdio.h>
+
+  int main()
+  {
+      printf("Hello world!");
+  }
 \end{lstlisting}
 
-``"
+``''
 
 \verb”%”
 
-\begin{enumerate}
-	\item
-	\item aaaa
-
-aaaa
-\end{enumerate}
+\begin{algorithm}[H]
+\caption{粒子群算法}\label{alg:PSO}
+\zihao{-5}
+\begin{algorithmic}[1]
+	\Require 直杆影子端点坐标 $\(x_i^*, y_i^*\), i = 1, 2, \cdots, n$.
+	\Ensure 纬度 $\phi$, 经度 $\psi$.
+	\State 在纬度 $\phi \in \l[-\dfrac{\pi}{2}, \dfrac{\pi}{2}\r]$, 地方时 $t \in [720, 1380]$ 的范围内随机创建粒子.
+\end{algorithmic}
+\end{algorithm}
 
 \begin{thebibliography}{1}
+%\setlength{\parskip}{0pt}
+%\setlength{\baselineskip}{16pt}
+%\setlength{\leftskip}{-19pt}
+%\setlength{\itemsep}{0em}
+%\setlength{\itemindent}{2em}
+%\setlength{\labelwidth}{0pt}
+%\setlength{\labelsep}{0pt}
+
 \addcontentsline{toc}{section}{参考文献}	% 将 "参考文献" 加入目录中
 
 \bibitem{RongYuan} 袁荣. 常微分方程[M]. 北京: 高等教育出版社, 2012:59,62.
@@ -523,7 +514,7 @@ aaaa
 
 \begin{appendices}
 
-\section{Some Appendix2}\label{aaa}
+\section{\bfseries Some Appendix2}\label{aaa}
 The contents...
 
 \end{appendices}

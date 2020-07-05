@@ -1,0 +1,56 @@
+% !Mode:: "TeX:UTF-8"
+\geometry{left = 2.5 cm, right = 2.5 cm, top = 2.5 cm, bottom = 2.5 cm,	% 页边距
+	headheight = 40 pt, headsep = 15 pt,	% 页眉距离
+	marginparwidth = 4 cm, marginparsep = 10 pt}	% 边注设置
+%\renewcommand{\baselinestretch}{1.5}	% 行距, 系统默认约 1.2, ctex 默认约 1.56
+%\linespread{1}	% 行距
+
+\newcommand\blfootnote[1]{%
+	\begingroup%
+	\renewcommand\thefootnote{}\footnote{#1}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}
+
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+\newcommand{\upref}[1]{\textsuperscript{\textsuperscript{\ref{#1}}}}
+
+\setcounter{MaxMatrixCols}{20}	% 矩阵最大列数
+
+% 矩阵行距
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+	\edef\arraystretch{#1}%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{*\c@MaxMatrixCols c}}
+\makeatother
+
+% 水印
+\newcommand{\watermark}[3]{\AddToShipoutPictureBG{
+\parbox[b][\paperheight]{\paperwidth}{
+\vfill%
+\centering%
+\tikz[remember picture, overlay]%
+	\node [rotate = #1, scale = #2] at (current page.center)%
+		{\textcolor{gray!80!cyan!30}{#3}};
+\vfill}}}
+%\newcommand{\watermarkoff}{\ClearShipoutPictureBG}
+
+%\xeCJKsetup{CJKecglue={}}
+
+\raggedbottom	% 防止报 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+\allowdisplaybreaks[2]	% 公式内允许换页
+
+%\pagenumbering{arabic}
+
+\hypersetup
+{
+	% 颜色
+	colorlinks	= true,
+	linkcolor	= black,
+	urlcolor	= black,
+	citecolor	= black,
+	anchorcolor	= blue,
+}
