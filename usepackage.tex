@@ -1,4 +1,7 @@
 % !Mode:: "TeX:UTF-8"
+\ExplSyntaxOn
+\msg_redirect_name:nnn{fontspec}{no-script}{info}	% 抑制 fontspec 警告
+\ExplSyntaxOff
 \usepackage[table]{xcolor}	% 表格着色
 \usepackage[toc, page]{appendix}
 \usepackage{amscd}	% 交换图
@@ -17,7 +20,7 @@
 \usepackage[space,	% 保留汉字与英文或数字之间的空格
 			heading,	% 开启章节标题设置功能
 			UTF8,	%编码为 UTF-8
-			fontset = windowsnew	% 使用 windowsnew 中文字体
+			fontset = fandol	% 使用 fandol 中文字体
 			]{ctex}	% 文档类为 article 或 book 时需要开启, ctexart 或 ctexbook 则不需要
 \usepackage{dsfont}	% \mathds{} 字体
 \usepackage{enumerate}	% 编号
