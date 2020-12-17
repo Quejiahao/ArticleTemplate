@@ -1,4 +1,6 @@
-% !Mode:: "TeX:UTF-8"
+% !TeX program	= XeLaTeX
+% !TeX encoding	= UTF-8
+
 %-------------------- 文类 --------------------
 \documentclass[UTF8, a4paper, 12pt, oneside, onecolumn]{article}
 
@@ -452,6 +454,14 @@ $\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_$
 \end{figure}
 
 \begin{figure}[H]
+	\resizebox{0.9\linewidth}{!}{\input{figure.pgf}}
+\end{figure}
+
+aaa \begin{tikzpicture}
+	\draw[->] (0, 0) -- (1, 1);
+\end{tikzpicture} aaa
+
+\begin{figure}[H]
 \centering
 \begin{minipage}[t]{.25\linewidth}\centering
 \qrh{https://jq.qq.com/?_wv=1027&k=57DLax6}
@@ -518,23 +528,5 @@ $\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_$
 The contents...
 
 \end{appendices}
-
-经典力学描述粒子 $x(t)$, $m\dot{x}(t) = p(t)$,
-
-$$\rho (x, t) \di x = \lrv{\psi(x, t)}^2 \di x$$
-
-\begin{align*}
-	\psi(\bm x) &= \dfrac{1}{(2\pi \hbar)^{\frac{d}{2}}} \int \p(\bm p) \e^{\i\frac{\bm p}{\hbar} \cdot \bm x} \di \bm p,\\
-	\p(\bm p) &= \dfrac{1}{(2\pi \hbar)^{\frac{d}{2}}} \int \psi(\bm x) \e^{\i\frac{\bm p}{\hbar} \cdot \bm x} \di \bm x,
-\end{align*}
-
-假设 $\psi(x) = A\e^{-\frac{\a^2x^2}{2}}$, 要求归一化: $\dint \lrv{\psi(x)}^2 \di x = 1$, 求得 $\lrv{A}^2 = \dfrac{\a}{\sqrt{\pi}}$, $A = \(\dfrac{\a}{\sqrt{\pi}}\)^{\frac{1}{2}}\e^{\i\te}$.
-
-\begin{align*}
-	\< p\> &= p \lrv{\p(p)}^2 \di p = \int p \p^*(p) \p(p) \di p\\
-	&= \int \l[ \dfrac{1}{\sqrt{2\pi\hbar}} \int \psi^* (x) \e^{\i\frac{p}{\hbar}x}\di x\r] p \p(p) \di p\\
-	&= \dfrac{1}{\sqrt{2\pi\hbar}} \int \psi^* (x) \(\dfrac{-\i\hbar\pa}{\pa x}\) \e^{\i\frac{p}{\hbar}x} \p(p) \di p \di x\\
-	&= \int \psi^* (x) \(\dfrac{-\i\hbar\pa}{\pa x}\) \psi(x) \di x = \int \psi^* (x) \wh{p} \psi(x) \di x
-\end{align*}
 
 \end{document}

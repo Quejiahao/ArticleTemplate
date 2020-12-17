@@ -1,4 +1,6 @@
-% !Mode:: "TeX:UTF-8"
+% !TeX program	= XeLaTeX
+% !TeX encoding	= UTF-8
+
 \ExplSyntaxOn
 \msg_redirect_name:nnn{fontspec}{no-script}{info}	% 抑制 fontspec 警告
 \ExplSyntaxOff
@@ -25,6 +27,7 @@
 \usepackage{dsfont}	% \mathds{} 字体
 \usepackage{enumerate}	% 编号
 \usepackage{enumitem}
+%\usepackage{etex}
 \usepackage{fancyhdr}	% 页眉页脚等
 \usepackage[T1]{fontenc}
 \usepackage{fontspec}	% 字体设置, 需要 XeLaTeX
@@ -72,6 +75,7 @@
 \usepackage{qrcode}	% 二维码
 \usepackage{printlen}	% 显示长度变量
 \usepackage[all, cmtip]{xy}	% 交换图
+\usepackage{pgf}
 \usepackage[unicode,
 			colorlinks	= true,
 			linkcolor	= black,
