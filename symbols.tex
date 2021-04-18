@@ -1,139 +1,143 @@
 % !TeX program	= XeLaTeX
 % !TeX encoding	= UTF-8
 
-\def\<{\left\langle}
-\def\>{\right\rangle}
-\def\({\left(}
-\def\){\right)}
-\def\-{\textrm{-}}	% 数学环境内使用 -, 而不是减号
+\newcommand\<{\left\langle}
+\renewcommand\>{\right\rangle}
+\renewcommand\({\left(}
+\renewcommand\){\right)}
+\renewcommand\-{\textrm{-}}	% 数学环境内使用 -, 而不是减号
 \def\1{\mathbbm{1}}
-\def\a{\alpha}
-\def\A{~\mathrm{A}}
-\def\AC{\mathrm{AC}}
-\def\al{\bm\alpha}
+\renewcommand\a{\alpha}
+\newcommand\A{~\mathrm{A}}
+\newcommand\AC{\mathrm{AC}}
+\newcommand\al{\bm\alpha}
 \DeclareMathOperator{\argmin}{argmin}
-\def\ba{\beta}
-\def\bA{\bm A}
-\def\bbH{\mathbb{H}}
-\def\bbS{\mathbb{S}}
-\def\be{\bm\beta}
-\def\bh{\bm h}
+\newcommand\ba{\beta}
+\newcommand\bb{\bm b}
+\newcommand\bA{\bm A}
+\providecommand{\bR}{\bm R}
+\newcommand\bbH{\mathbb{H}}
+\newcommand\bbS{\mathbb{S}}
+\newcommand\be{\bm\beta}
+\newcommand\bh{\bm h}
+\newcommand\bk{\bm k}
+\newcommand\br{\bm r}
 \newcommand{\bs}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}	% 斜线除号
-\def\bT{\mathbb{T}}
-\def\bU{\bm U}
-\def\BV{\mathrm{BV}}
-\def\bx{\bm x}
-\def\C{\mathbb{C}}	% 复数 C
-\def\mca{\mathcal}
-\def\cis{\displaystyle\bigcap_{k = 1}^\infty}
-\def\cov{\mathbf{Cov}}
-\def\csum{\displaystyle\sum_{k = 1}^\infty}
-\def\cT{\mathcal{T}}
-\def\cu{\displaystyle\bigcup_{k = 1}^\infty}
-\def\curl{\mathbf{curl}}
+\newcommand\bT{\mathbb{T}}
+\newcommand\bU{\bm U}
+\newcommand\BV{\mathrm{BV}}
+\newcommand\bx{\bm x}
+\renewcommand\C{\mathbb{C}}	% 复数 C
+\newcommand\mca{\mathcal}
+\newcommand\cis{\displaystyle\bigcap_{k = 1}^\infty}
+\newcommand\cov{\mathbf{Cov}}
+\newcommand\csum{\displaystyle\sum_{k = 1}^\infty}
+\newcommand\cT{\mathcal{T}}
+\newcommand\cu{\displaystyle\bigcup_{k = 1}^\infty}
+\newcommand\curl{\mathbf{curl}}
 \DeclareMathOperator{\ch}{ch}	% 双曲余弦
 \DeclareMathOperator{\diam}{diam}
-\def\de{\delta}
-\def\dba{\displaystyle\bigcap}	% 集合交
-\def\dbigcap{\displaystyle\bigcap}	% 集合交
-\def\dbigcup{\displaystyle\bigcup}	% 集合并
-\def\dbu{\displaystyle\bigcup}	% 集合并
-\def\di{\mathrm{d}}	% 微分算符 d
-\def\diff{\mathrm{d}}	% 微分算符 d
-\def\dinf{\displaystyle\inf}
-\def\divr{\mathbf{div}}
+\newcommand\de{\delta}
+\newcommand\dba{\displaystyle\bigcap}	% 集合交
+\newcommand\dbigcap{\displaystyle\bigcap}	% 集合交
+\newcommand\dbigcup{\displaystyle\bigcup}	% 集合并
+\newcommand\dbu{\displaystyle\bigcup}	% 集合并
+\newcommand\di{\mathrm{d}}	% 微分算符 d
+\newcommand\diff{\mathrm{d}}	% 微分算符 d
+\newcommand\dinf{\displaystyle\inf}
+\newcommand\divr{\mathbf{div}}
 \DeclareMathOperator{\diag}{diag}	% 对角矩阵 diag
-\def\dint{\displaystyle\int}
-\def\dlim{\displaystyle\lim}
-\def\dmax{\displaystyle\max}
-\def\dmin{\displaystyle\min}
-\def\dsum{\displaystyle\sum}	% 求和号
-\def\dsup{\displaystyle\sup}
-\def\dmmm{~\mathrm{dm^3}}
-\def\D{\Delta}
-\def\Di{\mathrm{D}}	% 微分算符 D
-\def\e{\mathrm{e}}	% 自然对数的底数
-\def\E{\mathbb{E}}	% \R 上赋予了欧氏拓扑
-\def\et{\bm\eta}
-\def\ep{\varepsilon}
-\def\fb{\bm f}
-\def\g{~\mathrm{g}}
-\def\ga{\bm\gamma}
-\def\geq{\geqslant}	% 大于或等于号, 下面一划是斜的
-\def\grad{\mathbf{grad}}
-\def\h{~\mathrm{h}}
-\def\heq{\mathbin{\widehat{=}}}
-\def\hin{\mathbin{\widehat{\in}}}
-\def\H{\mathrm{H}}	% 共轭转置 H
-\def\i{\mathrm{i}}	% 虚数单位 i
+\newcommand\dint{\displaystyle\int}
+\newcommand\dlim{\displaystyle\lim}
+\newcommand\dmax{\displaystyle\max}
+\newcommand\dmin{\displaystyle\min}
+\newcommand\dsum{\displaystyle\sum}	% 求和号
+\newcommand\dsup{\displaystyle\sup}
+\newcommand\dmmm{~\mathrm{dm^3}}
+\newcommand\D{\Delta}
+\newcommand\Di{\mathrm{D}}	% 微分算符 D
+\newcommand\e{\mathrm{e}}	% 自然对数的底数
+\newcommand\E{\mathbb{E}}	% \R 上赋予了欧氏拓扑
+\newcommand\et{\bm\eta}
+\newcommand\ep{\varepsilon}
+\newcommand\fb{\bm f}
+\newcommand\g{~\mathrm{g}}
+\newcommand\ga{\bm\gamma}
+\renewcommand\geq{\geqslant}	% 大于或等于号, 下面一划是斜的
+\newcommand\grad{\mathbf{grad}}
+\newcommand\h{~\mathrm{h}}
+\newcommand\heq{\mathbin{\widehat{=}}}
+\newcommand\hin{\mathbin{\widehat{\in}}}
+\renewcommand\H{\mathrm{H}}	% 共轭转置 H
+\renewcommand\i{\mathrm{i}}	% 虚数单位 i
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\im}{Im}
-\def\I{\bm{I}}		% 单位矩阵 I
-\def\Int{\mathrm{Int}}	% 内部
-\def\J{~\mathrm{J}}
-\def\JK{~\mathrm{J}~\cdot ~\mathrm{K}^{-1}}
-\def\kJ{~\mathrm{kJ}}
-\def\K{~\mathrm{K}}
+\newcommand\I{\bm{I}}		% 单位矩阵 I
+\newcommand\Int{\mathrm{Int}}	% 内部
+\newcommand\J{~\mathrm{J}}
+\newcommand\JK{~\mathrm{J}~\cdot ~\mathrm{K}^{-1}}
+\newcommand\kJ{~\mathrm{kJ}}
+\newcommand\K{~\mathrm{K}}
 \DeclareMathOperator{\Ker}{Ker}
 \def\l[{\left[}
-\def\lb{\left\{}
-\def\ld{\left.}
-\def\lllcdots{$%
+\newcommand\lb{\left\{}
+\newcommand\ld{\left.}
+\newcommand\lllcdots{$%
 \cdots\cdots\cdots\cdots\cdots%
 \cdots\cdots\cdots\cdots\cdots%
 \cdots\cdots\cdots\cdots\cdots%
 \cdots\cdots\cdots\cdots\cdots$}
-\def\lrb#1{\left\{ #1 \right\}}
-\def\lrv#1{\left| #1 \right|}
-\def\lrvv#1{\left\| #1 \right\|}
-\def\lv{\left|}
-\def\leq{\leqslant}	% 小于或等于号, 下面一划是斜的
-\def\mf#1{\marginpar{\footnotesize #1}}
-\def\m{\mathrm{m}}
-\def\mol{~\mathrm{mol}}
-\def\mr{\mathring}
-\def\ms#1{\marginpar{\scriptsize #1}}
-\def\N{\mathbb{N}}	% 自然数集 N
-\def\om{\omega}
-\def\oR{\overline{\mathbb{R}}}
-\def\ol{\overline}
-\def\p{\varphi}
+\newcommand{\lrb}[1]{\left\{ #1 \right\}}
+\newcommand{\lrv}[1]{\left| #1 \right|}
+\newcommand{\lrvv}[1]{\left\| #1 \right\|}
+\newcommand\lv{\left|}
+\renewcommand\leq{\leqslant}	% 小于或等于号, 下面一划是斜的
+\newcommand{\mf}[1]{\marginpar{\footnotesize #1}}
+\newcommand\m{\mathrm{m}}
+\newcommand\mol{~\mathrm{mol}}
+\newcommand\mr{\mathring}
+\newcommand{\ms}[1]{\marginpar{\scriptsize #1}}
+\newcommand\N{\mathbb{N}}	% 自然数集 N
+\newcommand\om{\omega}
+\newcommand\oR{\overline{\mathbb{R}}}
+\newcommand\ol{\overline}
+\newcommand\p{\varphi}
 \DeclareMathOperator{\proj}{proj}	% 向量的投影 proj
-\def\pa{\partial}
-\def\Pa{~\mathrm{Pa}}
-\def\pl{\mathbin{/\mskip-2.5mu/}}
-\def\Q{\mathbb{Q}}	% 有理数 Q
-\def\qrh#1{\href{#1}{\XeTeXLinkBox{\qrcode{#1}}}}	% XeLaTeX 下使得二维码是超链接
+\newcommand\pa{\partial}
+\newcommand\Pa{~\mathrm{Pa}}
+\newcommand\pl{\mathbin{/\mskip-2.5mu/}}
+\newcommand\Q{\mathbb{Q}}	% 有理数 Q
+\newcommand{\qrh}[1]{\href{#1}{\XeTeXLinkBox{\qrcode{#1}}}}	% XeLaTeX 下使得二维码是超链接
 \def\r]{\right]}
-\def\rb{\right\}}
-\def\rd{\right.}
-\def\rv{\right|}
+\newcommand\rb{\right\}}
+\newcommand\rd{\right.}
+\newcommand\rv{\right|}
 \DeclareMathOperator{\rank}{rank}	% 矩阵的秩 rank
-\def\R{\mathbb{R}}	% 实数域 R
-\def\rel{\mathrm{rel}}
-\def\Rie{\mathcal{R}}	% 黎曼可积 R
-\def\RP{\mathbb{RP}}	% 实数域 R
-\def\RR{\mathrm{R}}
-\def\s{~\mathrm{s}}
-\def\scr{\mathscr}
+\newcommand\R{\mathbb{R}}	% 实数域 R
+\newcommand\rel{\mathrm{rel}}
+\newcommand\Rie{\mathcal{R}}	% 黎曼可积 R
+\newcommand\RP{\mathbb{RP}}	% 实数域 R
+\newcommand\RR{\mathrm{R}}
+\newcommand\s{~\mathrm{s}}
+\newcommand\scr{\mathscr}
 \DeclareMathOperator{\sign}{sign}	% 映射度
-\def\sg{\sigma}
+\newcommand\sg{\sigma}
 \DeclareMathOperator{\sgn}{sgn}	% 符号函数
 \DeclareMathOperator{\sh}{sh}	% 双曲正弦
-\def\sn{\mathrm{span}}
+\newcommand\sn{\mathrm{span}}
 \def\st{~\textrm{s.t.}~}
-\def\sx{\mathscr{X}}
+\newcommand\sx{\mathscr{X}}
 \DeclareMathOperator{\supp}{supp}	% 支撑集
-\def\T{\mathrm{T}}	% 转置 T
-\def\te{\theta}
-\def\tr{\mathrm{tr}}	% 矩阵的迹 tr
+\newcommand\T{\mathrm{T}}	% 转置 T
+\newcommand\te{\theta}
+\newcommand\tr{\mathrm{tr}}	% 矩阵的迹 tr
 \DeclareMathOperator{\tah}{th}	% 双曲正切
-\def\U{\mathring{U}}	% 去心邻域 U 上面有一圈
-\def\V{~\mathrm{V}}
-\def\wh{\widehat}
-\def\wt{\widetilde}
-\def\xra{\xrightarrow}
-\def\xle{\xlongequal}
-\def\xlra{\xlongrightarrow}
-\def\xLra{\xLongrightarrow}
-\def\Z{\mathbb{Z}}	% 整数 Z
+\renewcommand\U{\mathring{U}}	% 去心邻域 U 上面有一圈
+\newcommand\V{~\mathrm{V}}
+\newcommand\wh{\widehat}
+\newcommand\wt{\widetilde}
+\newcommand\xra{\xrightarrow}
+\newcommand\xle{\xlongequal}
+\newcommand\xlra{\xlongrightarrow}
+\newcommand\xLra{\xLongrightarrow}
+\newcommand\Z{\mathbb{Z}}	% 整数 Z

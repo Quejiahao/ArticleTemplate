@@ -43,7 +43,7 @@
 
 \raggedbottom	% 防止报 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-\allowdisplaybreaks[2]	% 公式内允许换页
+\allowdisplaybreaks[4]	% 公式内允许换页
 
 %\pagenumbering{arabic}
 
@@ -56,3 +56,7 @@
 	citecolor	= black,
 	anchorcolor	= blue,
 }
+
+\algnewcommand\algorithmicto{\textbf{to}}
+\algrenewtext{For}[3]%
+{\algorithmicfor\ #1 $\gets$ #2 \algorithmicto\ #3 \algorithmicdo}
