@@ -62,6 +62,7 @@ acs-*.bib
 *.vrb
 
 # changes
+*.loc
 *.soc
 
 # comment
@@ -274,3 +275,8 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+# macOS Desktop Services Store
+.DS_Store
+
+packages
