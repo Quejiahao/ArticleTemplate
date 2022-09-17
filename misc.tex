@@ -60,3 +60,9 @@
 \algnewcommand\algorithmicto{\textbf{to}}
 \algrenewtext{For}[3]%
 {\algorithmicfor\ #1 $\gets$ #2 \algorithmicto\ #3 \algorithmicdo}
+
+\makeatletter
+\newcommand{\globalcolor}[1]{%
+	\color{#1}\global\let\default@color\current@color
+}
+\makeatother
